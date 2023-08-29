@@ -1,0 +1,21 @@
+# deployment
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flask-server
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      name: flask-server
+  template:
+    metadata:
+      labels:
+        name: flask-server
+    spec:
+      containers:
+        - name: flask-server
+          image: whisperimage
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 5020
